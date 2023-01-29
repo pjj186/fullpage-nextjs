@@ -2,7 +2,7 @@ import { IPageObj } from "@/pages";
 import { cls } from "@/utils/cls";
 
 interface IButtonsProps {
-  pageObjArrays: IPageObj[];
+  pageObjArray: IPageObj[];
   currentPageNum: number;
   handlePointClick: (pageNum: number) => void;
 }
@@ -10,7 +10,7 @@ interface IButtonsProps {
 const Buttons = (props: IButtonsProps) => {
   return (
     <>
-      {props.pageObjArrays.map((item, index) => {
+      {props.pageObjArray.map((item, index) => {
         return (
           <div
             key={item.pageNum}

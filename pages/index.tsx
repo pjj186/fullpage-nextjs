@@ -8,7 +8,7 @@ export interface IPageObj {
   bgColor: string;
 }
 
-const pageObjArrays = [
+const pageObjArray = [
   { pageNum: 1, bgColor: "bg-[#ffeaa7]" },
   { pageNum: 2, bgColor: "bg-[#fab1a0]" },
   { pageNum: 3, bgColor: "bg-[#fdcb6e]" },
@@ -18,7 +18,7 @@ const pageObjArrays = [
 const Home = () => {
   const [windowObj, setWindowObj] = useState<Window>();
   const [currentPageNum, setCurrentPageNum] = useState<number>(1);
-  const totalNum = pageObjArrays.length;
+  const totalNum = pageObjArray.length;
   const pageRefs = useRef<HTMLDivElement[]>([]); // 0번 인덱스 비어있음
 
   useEffect(() => {
@@ -67,7 +67,7 @@ const Home = () => {
         <title>Full Page App</title>
       </Head>
       <main className="relative">
-        {pageObjArrays.map((item, index) => {
+        {pageObjArray.map((item, index) => {
           return (
             <Section
               key={index}
@@ -83,7 +83,7 @@ const Home = () => {
         </span>
         <div className="flex flex-col space-y-4 fixed top-96 right-10 z-10">
           <Buttons
-            pageObjArrays={pageObjArrays}
+            pageObjArray={pageObjArray}
             currentPageNum={currentPageNum}
             handlePointClick={handlePointClick}
           />
