@@ -58,6 +58,7 @@ const Home = () => {
     return () => {
       windowObj?.removeEventListener("scroll", handlePageChange);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [windowObj]);
 
   return (
