@@ -1,7 +1,12 @@
+import Buttons from "@/components/Buttons";
 import Section from "@/components/Section";
 import Head from "next/head";
 import { useEffect, useRef, useState } from "react";
-import { cls } from "@/utils/cls";
+
+export interface IPageObj {
+  pageNum: number;
+  bgColor: string;
+}
 
 const pageObjArrays = [
   { pageNum: 1, bgColor: "bg-[#ffeaa7]" },
@@ -40,6 +45,14 @@ const Home = () => {
     }
   };
 
+  // 버튼 클릭
+  const handlePointClick = (pageNum: number) => {
+    windowObj?.scrollTo({
+      top: pageRefs.current[pageNum].offsetTop,
+      behavior: "smooth",
+    });
+  };
+
   useEffect(() => {
     windowObj?.addEventListener("scroll", handlePageChange);
     return () => {
@@ -68,17 +81,11 @@ const Home = () => {
           현재 페이지는 {currentPageNum} 입니다.
         </span>
         <div className="flex flex-col space-y-4 fixed top-96 right-10 z-10">
-          {pageObjArrays.map((item, index) => {
-            return (
-              <div
-                key={item.pageNum}
-                className={cls(
-                  "w-4 h-4  rounded-full cursor-pointer transition-all",
-                  currentPageNum === item.pageNum ? "bg-black" : "bg-gray-400"
-                )}
-              ></div>
-            );
-          })}
+          <Buttons
+            pageObjArrays={pageObjArrays}
+            currentPageNum={currentPageNum}
+            handlePointClick={handlePointClick}
+          />
         </div>
       </main>
     </>
