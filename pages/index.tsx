@@ -1,19 +1,19 @@
+import Section from "@/components/Section";
 import Head from "next/head";
-import Image from "next/image";
-import { Inter } from "@next/font/google";
-import styles from "@/styles/Home.module.css";
 
-const inter = Inter({ subsets: ["latin"] });
-
-export default function Home() {
+const Home = () => {
   return (
     <>
       <Head>
         <title>Full Page App</title>
       </Head>
       <main>
-        <span className="text-red-500">Hello Wolrd!</span>
+        {[1, 2, 3, 4].map((item, index) => {
+          return <Section key={index} pageNum={item} />;
+        })}
       </main>
     </>
   );
-}
+};
+
+export default Home;
